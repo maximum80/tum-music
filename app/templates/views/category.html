@@ -1,0 +1,71 @@
+<ion-view>
+  <ion-content padding="true" class="tum-background">
+    <div class="list tum-list primary">
+      <div class="item text-center">
+        <div class="item-icon-left">
+          <a href="" ng-click="goBack()" class="icon ion-ios-arrow-back tum-back"></a>
+        </div>
+        <h2>Classical</h2>
+        <div class="item-icon-right">
+          <a ui-sref="app.path" class="icon ion-close tum-exit"></a>
+        </div>
+      </div>
+      <ul class="tum-steps">
+        <li ui-sref-active="active">
+          <a ui-sref="app.category"></a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="app.songs"></a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="app.songsView"></a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="app.songsComplete"></a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="app.songsBack"></a>
+        </li>
+      </ul>
+
+      <div class="item">
+        <div class="row">
+          <div class="col">
+            <a ui-sref="app.songs({type: 'classical'})" class="button button-block tum-btn-category blue">
+              Classical
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <a ui-sref="app.songs({type: 'jazz'})" class="button button-block tum-btn-category green">
+              Jazz
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <a ui-sref="app.songs({type: 'country'})" class="button button-block tum-btn-category yellow">
+              Country
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <a ui-sref="app.songs({type: 'pop'})" class="button button-block tum-btn-category pink">
+              Pop
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <a ui-sref="app.songs({type: 'punk'})" class="button button-block tum-btn-category purple">
+              Punk
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="item text-center"></div>
+    </div>
+  </ion-content>
+</ion-view>

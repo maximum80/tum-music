@@ -2,43 +2,42 @@
 
 angular.module('Conceptum').factory('SoundCloudService', function ($http, $q, SC, SOUNDCLOUD_ENDPOINT) {
 
-  SC.initialize({
-    client_id: 'd59f85d0835670b50b9eaf8aa61447bd'
-  });
+  SC.initialize({client_id: SOUNDCLOUD_ENDPOINT.api_key});
 
-  SC.get('/tracks', {q: 'mozart', license: 'cc-by-sa'}, function (tracks) {
-    console.log(tracks);
-    SC.stream("/tracks/" + tracks[0].id, function (sound) {
-      sound.play();
-    });
-  });
-
-  var doSomethingAsync = function () {
+  function getList(filter) {
     var deferred = $q.defer();
-    deferred.resolve.bind(null, kindOfPrivateVariable)
+
+    SC.get('/tracks', filter, function (tracks) {
+      deferred.resolve(tracks);
+    });
+
     return deferred.promise;
-  };
+  }
 
-  var fetchSomethingFromServer = function () {
-    return $http({
-      url:    'http://hipsterjesus.com/api',
-      params: {
-        paras: 2
-      },
-      method: 'GET'
-    })
-      .success(function (data) {
-        console.log('fetched this stuff from server:', data);
-      })
-      .error(function (error) {
-        console.log('an error occured', error);
-      });
-  };
+  function getInfo(fileId) {
+    var deferred = $q.defer();
 
-  // public api
+    SC.get('/tracks/' + fileId, function (tracks) {
+      deferred.resolve(tracks);
+    });
+
+    return deferred.promise;
+  }
+
+  function stream(trackId) {
+    var deferred = $q.defer();
+
+    SC.stream("/tracks/" + trackId, function (sound) {
+      deferred.resolve(sound);
+    });
+
+    return deferred.promise;
+  }
+
   return {
-    doSomethingAsync:         doSomethingAsync,
-    fetchSomethingFromServer: fetchSomethingFromServer
+    getList: getList,
+    getInfo: getInfo,
+    stream: stream
   };
 
 });

@@ -1,0 +1,40 @@
+<ion-view>
+  <ion-content padding="true" class="tum-background">
+    <div class="list tum-list primary">
+      <div class="item text-center">
+        <div class="item-icon-left">
+          <a href="" ng-click="goBack()" class="icon ion-ios-arrow-back tum-back"></a>
+        </div>
+        <h2>{{type}}</h2>
+        <div class="item-icon-right">
+          <a ui-sref="app.path" class="icon ion-close tum-exit"></a>
+        </div>
+      </div>
+      <ul class="tum-steps">
+        <li ui-sref-active="active">
+          <a ui-sref="app.category"></a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="app.songs"></a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="app.songsView"></a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="app.songsComplete"></a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="app.songsBack"></a>
+        </li>
+      </ul>
+
+      <a class="item item-thumbnail-left" ui-sref="app.songsView({id: song.id})" ng-repeat="song in music">
+        <img ng-src="{{song.artwork_url}}">
+        <h2>{{song.title}}</h2>
+        <p>{{song.description}}</p>
+      </a>
+
+      <div class="item text-center"></div>
+    </div>
+  </ion-content>
+</ion-view>

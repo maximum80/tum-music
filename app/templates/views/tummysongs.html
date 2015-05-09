@@ -1,0 +1,10 @@
+<ion-view>
+  <ion-content>
+    <ul>
+      <li ng-repeat="song in music">
+        <img ng-src="{{song.artwork_url}}" alt=""/>
+        <button ng-click="play(song.id)">Play</button>
+      </li>
+    </ul>
+  </ion-content>
+</ion-view>

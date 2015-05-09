@@ -1,7 +1,9 @@
 'use strict';
 
-angular.module('Conceptum').controller('MainController', function($scope) {
+angular.module('Conceptum').controller('MainController', function($scope, $ionicHistory) {
 
-    // do something with $scope
+   $scope.goBack = function () {
+     $ionicHistory.goBack(-1);
+   };
 
-  });
+});
