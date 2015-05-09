@@ -1,12 +1,21 @@
 'use strict';
 
-angular.module('Conceptum').factory('ExampleService', function ($http, $timeout, $q) {
+angular.module('Conceptum').factory('SoundCloudService', function ($http, $q, SC, SOUNDCLOUD_ENDPOINT) {
 
-  var kindOfPrivateVariable = 42;
+  SC.initialize({
+    client_id: 'd59f85d0835670b50b9eaf8aa61447bd'
+  });
+
+  SC.get('/tracks', {q: 'mozart', license: 'cc-by-sa'}, function (tracks) {
+    console.log(tracks);
+    SC.stream("/tracks/" + tracks[0].id, function (sound) {
+      sound.play();
+    });
+  });
 
   var doSomethingAsync = function () {
     var deferred = $q.defer();
-    $timeout(deferred.resolve.bind(null, kindOfPrivateVariable), 1000);
+    deferred.resolve.bind(null, kindOfPrivateVariable)
     return deferred.promise;
   };
 

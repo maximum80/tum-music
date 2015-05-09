@@ -1,13 +1,6 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name Conceptum.controller:HomeController
- * @description
- * # HomeController
- */
-angular.module('Conceptum')
-  .controller('HomeController', function($scope, ExampleService) {
+angular.module('Conceptum').controller('HomeController', function($scope, ExampleService) {
 
     $scope.myHTML = null;
 

@@ -1,34 +1,16 @@
 'use strict';
 
-/**
- * @ngdoc constant
- * @name Conceptum.API_ENDPOINT
- * @description
- * # API_ENDPOINT
- * Defines the API endpoint where our resources will make requests against.
- * Is used inside /services/ApiService.js to generate correct endpoint dynamically
- */
-
-
-angular.module('Conceptum')
-
-  // development
-  .constant('API_ENDPOINT', {
-    host: 'http://localhost',
-    port: 3000,
-    path: '',
-    needsAuth: false
-  });
-
-
-  // live example with HTTP Basic Auth
-  /*
-  .constant('API_ENDPOINT', {
-    host: 'http://yourserver.com',
-    path: '/api/v2',
-    needsAuth: true,
-    username: 'whatever',
-    password: 'foobar'
-  });
-  */
-
+angular.module('Conceptum').constant('API_ENDPOINT', {
+  host:      'http://localhost',
+  port:      3000,
+  path:      '',
+  needsAuth: false
+}).constant('SOUNDCLOUD_ENDPOINT', {
+  host:       'https://soundcloud.com/connect',
+  token:      'https://api.soundcloud.com/oauth2/token',
+  port:       3000,
+  path:       '',
+  needsAuth:  false,
+  api_key:    'd59f85d0835670b50b9eaf8aa61447bd',
+  api_secret: '3c314f6c2220a6937037cb9ee08c0a1c'
+});
