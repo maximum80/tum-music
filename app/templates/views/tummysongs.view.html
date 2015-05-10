@@ -10,20 +10,6 @@
           <a ui-sref="app.path" ng-click="sound.stop()" class="icon ion-close tum-exit"></a>
         </div>
       </div>
-      <ul class="tum-steps">
-        <li ui-sref-active="active">
-          <a ui-sref="app.category"></a>
-        </li>
-        <li ui-sref-active="active">
-          <a ui-sref="app.songs"></a>
-        </li>
-        <li ui-sref-active="active">
-          <a ui-sref="app.songsView"></a>
-        </li>
-        <li ui-sref-active="active">
-          <a ui-sref="app.songsComplete"></a>
-        </li>
-      </ul>
       <div class="item item-image tum-song-img">
         <img ng-src="{{song.artwork_url | replaceImg}}">
         <div class="row tum-playback">

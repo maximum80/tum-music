@@ -73,7 +73,7 @@ angular.module('Conceptum', ['ionic', 'ngCordova', 'ngResource', 'ngCookies']).r
 
     .state('app.tummySong', {
       url:         '/tummysongs',
-      cache:       false,
+      cache:       true,
       templateUrl: 'templates/views/tummysongs.html',
       controller:  'TummysongsController',
       resolve: {
@@ -84,7 +84,7 @@ angular.module('Conceptum', ['ionic', 'ngCordova', 'ngResource', 'ngCookies']).r
     })
     .state('app.tummySongView', {
       url:         '/tummysongs/:SCID/:PATH/view',
-      cache:       true,
+      cache:       false,
       templateUrl: 'templates/views/tummysongs.view.html',
       controller:  'TummysongsViewController',
       resolve: {
