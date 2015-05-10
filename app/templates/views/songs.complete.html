@@ -24,21 +24,22 @@
           <a ui-sref="app.songsComplete"></a>
         </li>
       </ul>
-      <div class="item item-body text-center">
-        <div class="list">
-          <label class="item item-input item-stacked-label">
-            <input type="text" placeholder="Playlist Title">
-          </label>
-          <label class="item item-input item-stacked-label">
-            <textarea  placeholder="Comments" rows="10"></textarea>
-          </label>
-          <br/>
+      <form ng-submit="finish(songTitle, songComments)">
+        <div class="item item-body text-center">
+          <div class="list">
+            <label class="item item-input item-stacked-label">
+              <input type="text" placeholder="Playlist Title" ng-model="songTitle">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <textarea  placeholder="Comments" rows="10" ng-model="songComments"></textarea>
+            </label>
+            <br/>
+          </div>
         </div>
-      </div>
-
-      <div class="item text-center">
-        <button class="button button-block tum-btn-secondary">Complete</button>
-      </div>
+        <div class="item text-center">
+          <button type="submit" class="button button-block tum-btn-secondary">Complete</button>
+        </div>
+      </form>
     </div>
   </ion-content>
 </ion-view>

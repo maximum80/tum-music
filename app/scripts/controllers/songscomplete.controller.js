@@ -1,16 +1,23 @@
 'use strict';
 
-angular.module('Conceptum').controller('SongsCompleteController', function($scope, MusicService) {
+angular.module('Conceptum').controller('SongsCompleteController', function($scope, $state, MusicService, StorageService) {
 
-  $scope.finish = function (information, title, comment) {
-    MusicService.postMusic({
-      title: title,
-      comment: comment,
-      soundCloudId: id,
-      voicePath: path
-    }).then(function () {
-        // Do something
-    });
+  $scope.finish = function (title, comment) {
+    var TITLE = title || "Tummy Song";
+    var COMMENT = comment || "This is a dummy tummy song!";
+    var SCID = StorageService.take("SCID");
+    var PATH = _.isUndefined(StorageService.take("recordPath")) ? "/empty" : StorageService.take("recordPath");
+
+    if (!_.isUndefined(SCID)) {
+      MusicService.postMusic({
+        title: TITLE,
+        comment: COMMENT,
+        soundCloudId: SCID,
+        voicePath: PATH
+      }, StorageService.take('userId')).then(function () {
+        $state.go('app.path');
+      });
+    }
   };
 
 });

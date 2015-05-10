@@ -2,13 +2,12 @@
 
 angular.module('Conceptum').factory('MusicService', function ($http, $q, API_ENDPOINT) {
 
-  function getMusic() {
+  function getMusic(id) {
     var deferred = $q.defer();
 
     $http({
-      url : API_ENDPOINT.host + "/music",
-      method : "GET",
-      withCredentials: true
+      url : API_ENDPOINT.host + "/music/" + id,
+      method : "GET"
     }).success(function (data) {
       deferred.resolve(data);
     });
@@ -16,14 +15,13 @@ angular.module('Conceptum').factory('MusicService', function ($http, $q, API_END
     return deferred.promise;
   }
 
-  function postMusic(music) {
+  function postMusic(music, id) {
     var deferred = $q.defer();
 
     $http({
-      url : API_ENDPOINT.host + "/music",
+      url : API_ENDPOINT.host + "/music/" + id,
       method : "POST",
-      data: angular.toJson(music),
-      withCredentials: true
+      data: angular.toJson(music)
     }).success(function (data) {
       deferred.resolve(data);
     });

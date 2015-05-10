@@ -2,6 +2,6 @@
 
 angular.module('Conceptum').controller('CategoryController', function($scope) {
 
-    // do something with $scope
+  // do something with $scope
 
 });

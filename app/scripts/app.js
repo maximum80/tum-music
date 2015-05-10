@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('Conceptum', ['ionic', 'ngCordova', 'ngResource']).run(function ($ionicPlatform) {
+angular.module('Conceptum', ['ionic', 'ngCordova', 'ngResource', 'ngCookies']).run(function ($ionicPlatform) {
 
   $ionicPlatform.ready(function () {
     // save to use plugins here
@@ -73,12 +73,12 @@ angular.module('Conceptum', ['ionic', 'ngCordova', 'ngResource']).run(function (
 
     .state('app.tummySong', {
       url:         '/tummysongs',
-      cache:       true,
+      cache:       false,
       templateUrl: 'templates/views/tummysongs.html',
       controller:  'TummysongsController',
       resolve: {
-        tumMusic : function (MusicService) {
-          return MusicService.getMusic();
+        tumMusic : function (MusicService, StorageService) {
+          return MusicService.getMusic(StorageService.take('userId'));
         }
       }
     })
@@ -86,7 +86,12 @@ angular.module('Conceptum', ['ionic', 'ngCordova', 'ngResource']).run(function (
       url:         '/tummysongs/view',
       cache:       true,
       templateUrl: 'templates/views/tummysongs.view.html',
-      controller:  'TummysongsController'
+      controller:  'TummysongsViewController',
+      resolve: {
+        fetchSong: function ($stateParams, SoundCloudService) {
+          return SoundCloudService.getInfo($stateParams.id);
+        }
+      }
     });
 
   // redirects to default route for undefined routes

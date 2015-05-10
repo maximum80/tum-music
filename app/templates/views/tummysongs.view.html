@@ -1,5 +1,54 @@
 <ion-view>
-  <ion-content>
-
+  <ion-content padding="true" class="tum-background">
+    <div class="card tum-list primary">
+      <div class="item text-center">
+        <div class="item-icon-left">
+          <a href="" ng-click="goBack()" class="icon ion-ios-arrow-back tum-back"></a>
+        </div>
+        <h2>Music</h2>
+        <div class="item-icon-right">
+          <a ui-sref="app.path" ng-click="sound.stop()" class="icon ion-close tum-exit"></a>
+        </div>
+      </div>
+      <ul class="tum-steps">
+        <li ui-sref-active="active">
+          <a ui-sref="app.category"></a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="app.songs"></a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="app.songsView"></a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="app.songsComplete"></a>
+        </li>
+      </ul>
+      <div class="item item-image tum-song-img">
+        <img ng-src="{{song.artwork_url | replaceImg}}">
+        <div class="row tum-playback">
+          <div class="col">
+            <button ng-click="sound.stop()" class="tum-play">
+              <i class="icon ion-stop"></i>
+            </button>
+          </div>
+          <div class="col">
+            <button ng-click="sound.play()" class="tum-play">
+              <i class="icon ion-play"></i>
+            </button>
+          </div>
+          <div class="col">
+            <button ng-click="sound.pause()" class="tum-play">
+              <i class="icon ion-pause"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="item item-body text-center">
+        <h2>{{song.title}}</h2>
+        <p>{{song.description}}</p>
+        <button class="button button-block tum-btn-primary" ng-click="record()">Play Voice</button>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
