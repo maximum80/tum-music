@@ -7,7 +7,8 @@ angular.module('Conceptum').factory('MusicService', function ($http, $q, API_END
 
     $http({
       url : API_ENDPOINT.host + "/music",
-      method : "GET"
+      method : "GET",
+      withCredentials: true
     }).success(function (data) {
       deferred.resolve(data);
     });
@@ -21,7 +22,8 @@ angular.module('Conceptum').factory('MusicService', function ($http, $q, API_END
     $http({
       url : API_ENDPOINT.host + "/music",
       method : "POST",
-      data: angular.toJson(music)
+      data: angular.toJson(music),
+      withCredentials: true
     }).success(function (data) {
       deferred.resolve(data);
     });

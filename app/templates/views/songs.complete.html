@@ -1,5 +1,44 @@
 <ion-view>
-  <ion-content>
+  <ion-content padding="true" class="tum-background">
+    <div class="card tum-list primary">
+      <div class="item text-center">
+        <div class="item-icon-left">
+          <a href="" ng-click="goBack()" class="icon ion-ios-arrow-back tum-back"></a>
+        </div>
+        <h2>Finish</h2>
+        <div class="item-icon-right">
+          <a ui-sref="app.path" ng-click="sound.stop()" class="icon ion-close tum-exit"></a>
+        </div>
+      </div>
+      <ul class="tum-steps">
+        <li ui-sref-active="active">
+          <a ui-sref="app.category"></a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="app.songs"></a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="app.songsView"></a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="app.songsComplete"></a>
+        </li>
+      </ul>
+      <div class="item item-body text-center">
+        <div class="list">
+          <label class="item item-input item-stacked-label">
+            <input type="text" placeholder="Playlist Title">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <textarea  placeholder="Comments" rows="10"></textarea>
+          </label>
+          <br/>
+        </div>
+      </div>
 
+      <div class="item text-center">
+        <button class="button button-block tum-btn-secondary">Complete</button>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
