@@ -4,14 +4,18 @@
       <div class="item item-image">
         <img src="/images/logo.png" alt=""/>
       </div>
-      <div class="list list-inset">
-        <label class="item item-input">
-          <input type="text" placeholder="First Name">
+      <form ng-submit="signin(email, pass)">
+        <label class="item tum-input">
+          <input type="text" placeholder="Email" ng-model="email">
         </label>
-        <label class="item item-input">
-          <input type="text" placeholder="Last Name">
+        <label class="item tum-input">
+          <input type="password" placeholder="Password" ng-model="pass">
         </label>
-      </div>
+        <div class="item">
+          <button type="submit" class="button button-block tum-btn-secondary">Login</button>
+          <!--<a ui-sref="app.path" class="button button-block tum-btn-secondary">Path</a>-->
+        </div>
+      </form>
     </div>
   </ion-content>
 </ion-view>

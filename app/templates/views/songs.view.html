@@ -7,7 +7,7 @@
         </div>
         <h2>Music</h2>
         <div class="item-icon-right">
-          <a ui-sref="app.path" class="icon ion-close tum-exit"></a>
+          <a ui-sref="app.path" ng-click="sound.stop()" class="icon ion-close tum-exit"></a>
         </div>
       </div>
       <ul class="tum-steps">
@@ -22,9 +22,6 @@
         </li>
         <li ui-sref-active="active">
           <a ui-sref="app.songsComplete"></a>
-        </li>
-        <li ui-sref-active="active">
-          <a ui-sref="app.songsBack"></a>
         </li>
       </ul>
       <div class="item item-image tum-song-img">

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('Conceptum').controller('SongsViewController', function($scope, $stateParams, fetchSong, SoundCloudService, $cordovaCapture) {
+angular.module('Conceptum').controller('SongsViewController', function($scope, $stateParams, fetchSong, SoundCloudService, $cordovaCapture, $ionicHistory) {
 
   $scope.song = fetchSong;
   $scope.playing = false;
@@ -10,16 +10,17 @@ angular.module('Conceptum').controller('SongsViewController', function($scope, $
     $scope.sound = data;
   });
 
-  $scope.play = function () {
-    $scope.sound.play();
-  };
-
   $scope.record = function() {
     $cordovaCapture.captureAudio({duration: 300}).then(function(audioData) {
       console.log(audioData);
     }, function(err) {
       console.log(err);
     });
+  };
+
+  $scope.goBack = function () {
+    $scope.sound.stop();
+    $ionicHistory.goBack(-1);
   };
 
 });

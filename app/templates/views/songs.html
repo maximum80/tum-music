@@ -5,7 +5,7 @@
         <div class="item-icon-left">
           <a href="" ng-click="goBack()" class="icon ion-ios-arrow-back tum-back"></a>
         </div>
-        <h2>{{type}}</h2>
+        <h2 style="text-transform: capitalize">{{type}}</h2>
         <div class="item-icon-right">
           <a ui-sref="app.path" class="icon ion-close tum-exit"></a>
         </div>
@@ -22,9 +22,6 @@
         </li>
         <li ui-sref-active="active">
           <a ui-sref="app.songsComplete"></a>
-        </li>
-        <li ui-sref-active="active">
-          <a ui-sref="app.songsBack"></a>
         </li>
       </ul>
 

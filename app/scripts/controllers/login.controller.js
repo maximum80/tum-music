@@ -1,7 +1,14 @@
 'use strict';
 
-angular.module('Conceptum').controller('LoginController', function($scope) {
+angular.module('Conceptum').controller('LoginController', function($scope, $state, AuthService) {
 
-    // do something with $scope
+    $scope.signin = function (email, pass) {
+      AuthService.login(email, pass).then(function (data) {
+        console.log(data);
+        if (data.user) {
+          $state.go("app.path");
+        }
+      });
+    };
 
 });

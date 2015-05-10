@@ -1,15 +1,59 @@
 'use strict';
 
-angular.module('Conceptum').factory('ApiService', function ($window, $http, API_ENDPOINT) {
+angular.module('Conceptum').factory('AuthService', function ($http, $q, API_ENDPOINT) {
 
-  var _api     = API_ENDPOINT;
-  var endpoint = _api.port ? (_api.host + ':' + _api.port + _api.path) : (_api.host + _api.path);
+  function login(email, pass) {
+    var deferred = $q.defer();
 
-  // public api
+    $http({
+      url : API_ENDPOINT.host + "/login",
+      method : "POST",
+      data: angular.toJson({
+        email : email,
+        password: pass
+      })
+    }).success(function (data) {
+      deferred.resolve(data);
+    });
+
+    return deferred.promise;
+  }
+
+  function register(email, pass, name) {
+    var deferred = $q.defer();
+
+    $http({
+      url : API_ENDPOINT.host + "/user",
+      method : "POST",
+      data: angular.toJson({
+        email : email,
+        password: pass,
+        name: name
+      })
+    }).success(function (data) {
+      deferred.resolve(data);
+    });
+
+    return deferred.promise;
+  }
+
+  function logout() {
+    var deferred = $q.defer();
+
+    $http({
+      url : API_ENDPOINT.host + "/logout",
+      method : "GET"
+    }).success(function (data) {
+      deferred.resolve(data);
+    });
+
+    return deferred.promise;
+  }
+
   return {
-    getEndpoint: function () {
-      return endpoint;
-    }
+    login : login,
+    register : register,
+    logout : logout
   };
 
 });

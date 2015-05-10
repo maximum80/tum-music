@@ -68,20 +68,19 @@ angular.module('Conceptum', ['ionic', 'ngCordova', 'ngResource']).run(function (
       url:         '/songs/complete',
       cache:       true,
       templateUrl: 'templates/views/songs.complete.html',
-      controller:  'SongsController'
-    })
-    .state('app.songsBack', {
-      url:         '/songs/back',
-      cache:       true,
-      templateUrl: 'templates/views/songs.back.html',
-      controller:  'SongsController'
+      controller:  'SongsCompleteController'
     })
 
     .state('app.tummySong', {
       url:         '/tummysongs',
       cache:       true,
       templateUrl: 'templates/views/tummysongs.html',
-      controller:  'TummysongsController'
+      controller:  'TummysongsController',
+      resolve: {
+        tumMusic : function (MusicService) {
+          return MusicService.getMusic();
+        }
+      }
     })
     .state('app.tummySongView', {
       url:         '/tummysongs/view',
