@@ -10,7 +10,7 @@
           <a ui-sref="app.path" class="icon ion-close tum-exit"></a>
         </div>
       </div>
-      <a class="item" ui-sref="app.songsView({id: song.soundCloudId, voicePath: song.voicePath})" ng-repeat="song in musicList.results">
+      <a class="item" ui-sref="app.tummySongView({SCID: song.soundCloudId, PATH: song.voicePath})" ng-repeat="song in musicList.results">
         <h2>{{song.title}}</h2>
         <p>{{song.comment}}</p>
       </a>

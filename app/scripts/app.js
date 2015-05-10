@@ -83,13 +83,13 @@ angular.module('Conceptum', ['ionic', 'ngCordova', 'ngResource', 'ngCookies']).r
       }
     })
     .state('app.tummySongView', {
-      url:         '/tummysongs/view',
+      url:         '/tummysongs/:SCID/:PATH/view',
       cache:       true,
       templateUrl: 'templates/views/tummysongs.view.html',
       controller:  'TummysongsViewController',
       resolve: {
         fetchSong: function ($stateParams, SoundCloudService) {
-          return SoundCloudService.getInfo($stateParams.id);
+          return SoundCloudService.getInfo($stateParams.SCID);
         }
       }
     });

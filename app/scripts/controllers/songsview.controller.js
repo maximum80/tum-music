@@ -14,7 +14,8 @@ angular.module('Conceptum').controller('SongsViewController', function($scope, $
 
   $scope.record = function() {
     $cordovaCapture.captureAudio({duration: 300}).then(function(audioData) {
-      StorageService.push('recordPath', audioData[0].localURL);
+      console.log(audioData);
+      StorageService.push('recordPath', audioData[0].fullPath);
     }, function(err) {
       console.log(err);
     });
